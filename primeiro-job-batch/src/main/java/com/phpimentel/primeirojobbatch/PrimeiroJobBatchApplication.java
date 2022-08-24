@@ -9,5 +9,4 @@ public class PrimeiroJobBatchApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PrimeiroJobBatchApplication.class, args);
 	}
-
 }
