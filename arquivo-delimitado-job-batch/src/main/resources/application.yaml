@@ -1,0 +1,15 @@
+server:
+  port: 8080
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:mariadb://localhost:3306/spring_batch?createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: root
+    password: my-secret-pwd
+  batch:
+    jdbc:
+      initialize-schema: ALWAYS
