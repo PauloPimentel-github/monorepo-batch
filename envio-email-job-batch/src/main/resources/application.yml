@@ -1,0 +1,26 @@
+server:
+  port: 8081
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:mariadb://localhost:3306/envio_email_clientes?createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: root
+    password: my-secret-pwd
+  batch:
+    jdbc:
+      initialize-schema: ALWAYS
+  mail:
+    host: smtp.mailtrap.io
+    port: 2525
+    username: 797d5bff0763fe
+    password: 502548c62aac9f
+    properties:
+      mail:
+        smtp:
+          auth: true
+          startt:
+            enable: true
