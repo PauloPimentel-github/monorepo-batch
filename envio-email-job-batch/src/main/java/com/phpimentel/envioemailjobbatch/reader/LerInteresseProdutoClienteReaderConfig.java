@@ -36,21 +36,25 @@ public class LerInteresseProdutoClienteReaderConfig {
 
             @Override
             public InteresseProdutoCliente mapRow(ResultSet rs, int rowNum) throws SQLException {
-                Cliente cliente = new Cliente();
-                cliente.setId(rs.getLong("id"));
-                cliente.setNome(rs.getString("nome"));
-                cliente.setEmail(rs.getString("email"));
+                if (rs.getRow() <= 9) {
+                    throw new SQLException(String.format("Encerrando a execução - Cliente inválido %s", rs.getString("email")));
+                } else {
+                    Cliente cliente = new Cliente();
+                    cliente.setId(rs.getLong("id"));
+                    cliente.setNome(rs.getString("nome"));
+                    cliente.setEmail(rs.getString("email"));
 
-                Produto produto = new Produto();
-                produto.setId(rs.getLong(6));
-                produto.setNome(rs.getString(7));
-                produto.setDescricao(rs.getString("descricao"));
-                produto.setPreco(rs.getDouble("preco"));
+                    Produto produto = new Produto();
+                    produto.setId(rs.getLong(6));
+                    produto.setNome(rs.getString(7));
+                    produto.setDescricao(rs.getString("descricao"));
+                    produto.setPreco(rs.getDouble("preco"));
 
-                InteresseProdutoCliente interesseProdutoCliente = new InteresseProdutoCliente();
-                interesseProdutoCliente.setCliente(cliente);
-                interesseProdutoCliente.setProduto(produto);
-                return interesseProdutoCliente;
+                    InteresseProdutoCliente interesseProdutoCliente = new InteresseProdutoCliente();
+                    interesseProdutoCliente.setCliente(cliente);
+                    interesseProdutoCliente.setProduto(produto);
+                    return interesseProdutoCliente;
+                }
             }
         };
     }

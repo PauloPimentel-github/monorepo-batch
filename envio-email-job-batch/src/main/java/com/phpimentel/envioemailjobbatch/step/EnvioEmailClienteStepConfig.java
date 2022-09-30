@@ -29,6 +29,9 @@ public class EnvioEmailClienteStepConfig {
                 .reader(lerInteresseProdutoClienteReader)
                 .processor(processarEmailProdutoClienteProcessor)
                 .writer(enviarEmailProdutoClienteWriter)
+                .faultTolerant()
+                .skip(Exception.class)
+                .skipLimit(10)
                 .build();
     }
 }
